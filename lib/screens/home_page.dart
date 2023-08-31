@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nmims_app/models/category_item_model.dart';
+import 'package:nmims_app/widgets/app_bar.dart';
 import 'package:nmims_app/widgets/category_item.dart';
+import 'package:nmims_app/widgets/home_page_widgets/quick_info_cards.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,258 +16,49 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            IconButton(
-              icon: const Icon(
-                Icons.person,
-                color: Colors.black,
-                size: 30,
-              ),
-              onPressed: () {
-                // Add your assignments icon tap logic here
-              },
-            ),
-            const SizedBox(width: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: const CustomAppBar(),
+      body: ListView(
+        children: [
+          const SizedBox(height: 20),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+            child: Column(
               children: [
-                Text(
-                  'John Doe',
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const Text.rich(
-                  TextSpan(
-                    text: 'B.Tech Computer - ',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'SEM V',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                QuickInfoCards(text: 'Attendance', number: 3),
+                SizedBox(height: 20),
+                QuickInfoCards(text: 'Pending \nAssignments', number: 80),
+                SizedBox(height: 30),
               ],
             ),
-            const Spacer(),
-            IconButton(
-              icon: const Icon(
-                Icons.assignment,
-                color: Colors.black,
-                size: 30,
-              ),
-              onPressed: () {
-                // Add your attendance icon tap logic here
-              },
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: const Color(0xFFFF6161),
+              borderRadius: BorderRadius.circular(50),
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.touch_app,
-                color: Colors.black,
-                size: 30,
-              ),
-              onPressed: () {
-                // Add your attendance icon tap logic here
-              },
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.notifications,
-                color: Colors.black,
-                size: 30,
-              ),
-              onPressed: () {
-                // Add your announcements icon tap logic here
-              },
-            ),
-          ],
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 50,
+            child: Padding(
+              padding: const EdgeInsets.all(35),
+              child: GridView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: categories.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 30,
                 ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Stack(
-                        clipBehavior: Clip.hardEdge,
-                        children: [
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color(0xFFFF5F5F),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.only(left: 30),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Attendance',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    overflow: TextOverflow.visible,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: -20,
-                            top: -20,
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF58585A),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  '80',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Stack(
-                        clipBehavior: Clip.hardEdge,
-                        children: [
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: const Color(0xFFFF5F5F),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.only(left: 30),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Pending \nAssignments',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    overflow: TextOverflow.visible,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: -20,
-                            top: -20,
-                            child: Container(
-                              height: 120,
-                              width: 120,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFF58585A),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  '3',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                  ],
-                ),
+                itemBuilder: (context, index) {
+                  return CategoryItem(
+                    categoryName: categories[index].categoryName,
+                    categoryIcon: categories[index].categoryIcon,
+                  );
+                },
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: const Color(0xFFFF6161),
-              ),
-              height: 800,
-              width: double.infinity,
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 20,
-                crossAxisSpacing: 20,
-                padding: const EdgeInsets.all(25),
-                children: const [
-                  CategoryItem(
-                    categoryName: 'Attendance',
-                    categoryIcon: Icons.touch_app,
-                  ),
-                  CategoryItem(
-                    categoryName: 'Assignments',
-                    categoryIcon: Icons.assignment,
-                  ),
-                  CategoryItem(
-                    categoryName: 'Announcements',
-                    categoryIcon: Icons.notifications,
-                  ),
-                  CategoryItem(
-                    categoryName: 'Time Table',
-                    categoryIcon: Icons.table_chart,
-                  ),
-                  CategoryItem(
-                    categoryName: 'Syllabus',
-                    categoryIcon: Icons.book,
-                  ),
-                  CategoryItem(
-                    categoryName: 'Results',
-                    categoryIcon: Icons.assessment,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
