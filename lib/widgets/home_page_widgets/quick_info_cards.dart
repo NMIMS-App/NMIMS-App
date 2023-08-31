@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuickInfoCards extends StatelessWidget {
   const QuickInfoCards({super.key, required this.text, required this.number});
@@ -26,10 +27,9 @@ class QuickInfoCards extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   text,
-                  style: const TextStyle(
+                  style: GoogleFonts.inter(
                     color: Colors.white,
-                    fontSize: 24,
-                    overflow: TextOverflow.visible,
+                    fontSize: 20,
                   ),
                 ),
               ),
@@ -45,13 +45,19 @@ class QuickInfoCards extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Color(0xFF58585A),
               ),
-              child: Center(
-                child: Text(
-                  number.toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+              child: FractionallySizedBox(
+                alignment:
+                    const Alignment(-0.5, 0), // Adjust the X alignment here.
+                widthFactor: 0.7, // taking 70% of the width
+                child: Center(
+                  child: Text(
+                    number.toString(),
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

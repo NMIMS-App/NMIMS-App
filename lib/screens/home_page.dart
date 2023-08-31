@@ -33,9 +33,12 @@ class _HomePageState extends State<HomePage> {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              color: const Color(0xFFFF6161),
-              borderRadius: BorderRadius.circular(50),
+            decoration: const BoxDecoration(
+              color: Color(0xFFFF6161),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(50),
+                topRight: Radius.circular(50),
+              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(35),
