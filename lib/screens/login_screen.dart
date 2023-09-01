@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/screens/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,6 +12,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  get passwordController => null;
+  get sapidController => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     child: TextFormField(
+                      controller: sapidController,
                       decoration: const InputDecoration(
                         hintText: 'SAP ID',
                         border: InputBorder.none,
@@ -116,6 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     child: TextFormField(
+                      controller: passwordController,
                       decoration: const InputDecoration(
                         hintText: 'Password',
                         border: InputBorder.none,
@@ -188,10 +194,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (builder) => const HomePage(),
-                    ),
+                  FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: sapidController, password: passwordController).then((value) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (builder) => const HomePage(),
+                      ),
+                    );
+                  }
                   );
                 },
                 style: ElevatedButton.styleFrom(

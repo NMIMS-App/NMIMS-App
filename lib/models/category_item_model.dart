@@ -13,7 +13,8 @@ class Category {
   IconData categoryIcon;
   StatefulWidget categoryLink;
 }
-
+// TODO: Figure out how we can pass only the constructor.
+//       Constructing the object before it is required will take more RAM.
 final categories = [
   Category(
     categoryLink: const TimeTable(),

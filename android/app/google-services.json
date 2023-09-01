@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "405591736830",
+    "project_id": "nmims-portal-app",
+    "storage_bucket": "nmims-portal-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405591736830:android:e91058629a1c9c438e80af",
+        "android_client_info": {
+          "package_name": "com.example.nmims_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405591736830-n6948b8opn6pij8fav4bi2007p221t3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtiQsdOUHi5qEkPBCOaGmF4FVoEpQ0dco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405591736830-n6948b8opn6pij8fav4bi2007p221t3p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "405591736830-c5t42rpih4sfirp288mn64pa8fps3q8l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nmimsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
