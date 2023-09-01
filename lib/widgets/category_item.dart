@@ -1,11 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nmims_app/screens/timetable.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({super.key, this.categoryName, this.categoryIcon});
+
+  const CategoryItem({super.key, this.categoryName, this.categoryIcon, required this.categoryLink});
 
   final String? categoryName;
   final IconData? categoryIcon;
+  final StatefulWidget categoryLink;
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +18,12 @@ class CategoryItem extends StatelessWidget {
       onTap: () {
         // TODO: Handle tap action here.
         print('$categoryName tapped!');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => categoryLink,
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(
