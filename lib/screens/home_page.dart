@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/models/category_item_model.dart';
 import 'package:nmims_app/widgets/app_bar.dart';
 import 'package:nmims_app/widgets/category_item.dart';
