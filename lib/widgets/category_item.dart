@@ -6,12 +6,12 @@ class CategoryItem extends StatelessWidget {
     super.key,
     this.categoryName,
     this.categoryIcon,
-    required this.categoryLink,
+    required this.categoryScreen,
   });
 
   final String? categoryName;
   final IconData? categoryIcon;
-  final Widget categoryLink;
+  final Widget categoryScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => categoryLink,
+            builder: (context) => categoryScreen,
           ),
         );
       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/widgets/app_bar.dart';
 import 'package:nmims_app/widgets/assignment_item.dart';
 import 'package:nmims_app/models/assignment_item_model.dart';
@@ -13,18 +14,80 @@ class AssignmentsScreen extends StatefulWidget {
 class _AssignmentsScreenState extends State<AssignmentsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const CustomAppBar(),
-      body: ListView.builder(
-        itemCount: assignments.length,
-        itemBuilder: (context, index) {
-          return AssignmentItem(
-            assignmentName: assignments[index].assignmentName,
-            assignmentDueDate: assignments[index].assignmentDueDate,
-            assignmentSubmitted: assignments[index].assignmentSubmitted,
-          );
-        },
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: const CustomAppBar(),
+        body: Column(
+          children: [
+            TabBar(
+              dividerColor: Colors.transparent,
+              automaticIndicatorColorAdjustment: true,
+              indicatorColor: Colors.black,
+              labelColor: Colors.black,
+              labelStyle: GoogleFonts.inter(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+              unselectedLabelColor: Colors.grey,
+              tabs: const [
+                Tab(
+                    icon: Icon(
+                      Icons.assignment,
+                      size: 28,
+                    ),
+                    text: 'Pending'),
+                Tab(
+                    icon: Icon(
+                      Icons.check_circle_outline,
+                      size: 28,
+                    ),
+                    text: 'Completed'),
+                Tab(
+                    icon: Icon(
+                      Icons.warning,
+                      size: 28,
+                    ),
+                    text: 'Late'),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  _buildTab(assignments
+                      .where((a) => !a.assignmentSubmitted && !isLate(a))
+                      .toList()),
+                  _buildTab(
+                      assignments.where((a) => a.assignmentSubmitted).toList()),
+                  _buildTab(assignments
+                      .where((a) => !a.assignmentSubmitted && isLate(a))
+                      .toList()),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+
+  bool isLate(Assignment assignment) {
+    final today = DateTime.now();
+    return today.isAfter(assignment.assignmentDueDate);
+  }
+
+  Widget _buildTab(List<Assignment> assignments) {
+    return ListView.builder(
+      itemCount: assignments.length,
+      itemBuilder: (context, index) {
+        final assignment = assignments[index];
+        return AssignmentItem(
+          assignmentName: assignment.assignmentName,
+          assignmentDueDate: assignment.assignmentDueDate.toString(),
+          assignmentSubmitted: assignment.assignmentSubmitted,
+          assignmentCourse: assignment.assignmentCourse,
+        );
+      },
     );
   }
 }
