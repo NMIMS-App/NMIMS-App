@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-import '../widgets/app_bar.dart';
+import '../../widgets/app_bar.dart';
 
 class TimeTable extends StatefulWidget {
   const TimeTable({super.key});
