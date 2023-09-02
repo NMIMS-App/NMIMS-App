@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                   return CategoryItem(
                     categoryName: categories[index].categoryName,
                     categoryIcon: categories[index].categoryIcon,
-                    categoryLink: categories[index].categoryLink,
+                    categoryScreen: categories[index].categoryScreen,
                   );
                 },
               ),

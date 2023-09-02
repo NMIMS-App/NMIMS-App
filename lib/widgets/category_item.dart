@@ -5,11 +5,11 @@ import 'package:nmims_app/screens/timetable.dart';
 
 class CategoryItem extends StatelessWidget {
 
-  const CategoryItem({super.key, this.categoryName, this.categoryIcon, required this.categoryLink});
+  const CategoryItem({super.key, this.categoryName, this.categoryIcon, required this.categoryScreen});
 
   final String? categoryName;
   final IconData? categoryIcon;
-  final StatefulWidget categoryLink;
+  final StatefulWidget categoryScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => categoryLink,
+            builder: (context) => categoryScreen,
           ),
         );
       },
