@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nmims_app/screens/home_page.dart';
+import 'package:nmims_app/screens/home/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,8 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  get passwordController => null;
-  get sapidController => null;
+  final TextEditingController sapidController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 onPressed: () {
                   FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: sapidController, password: passwordController).then((value) {
+                    email: sapidController.text, password: passwordController.text).then((value) {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (builder) => const HomePage(),

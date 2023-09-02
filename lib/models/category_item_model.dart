@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nmims_app/screens/timetable.dart';
+import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class Category {
 
