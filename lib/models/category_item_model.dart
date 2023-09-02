@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nmims_app/screens/syllabus/syllabus.dart';
 import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class Category {
@@ -37,7 +38,7 @@ final categories = [
     categoryIcon: Icons.table_chart,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const Syllabus(),
     categoryName: 'Syllabus',
     categoryIcon: Icons.book,
   ),
