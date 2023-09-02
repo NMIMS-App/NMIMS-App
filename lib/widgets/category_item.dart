@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -21,6 +22,7 @@ class CategoryItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
+            builder: (context) => categoryScreen,
             builder: (context) => categoryScreen,
           ),
         );

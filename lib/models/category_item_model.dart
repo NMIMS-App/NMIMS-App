@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments_screen.dart';
-import 'package:nmims_app/screens/timetable.dart';
+import 'package:nmims_app/screens/syllabus/syllabus.dart';
+import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class Category {
   Category({
@@ -14,6 +15,8 @@ class Category {
   StatefulWidget categoryScreen;
 }
 
+// TODO: Figure out how we can pass only the constructor.
+//       Constructing the object before it is required will take more RAM.
 final categories = [
   Category(
     categoryScreen: const TimeTable(),
@@ -36,6 +39,7 @@ final categories = [
     categoryIcon: Icons.notifications,
   ),
   Category(
+    categoryScreen: const TimeTable(),
     categoryScreen: const TimeTable(),
     categoryName: 'Time Table',
     categoryIcon: Icons.table_chart,
