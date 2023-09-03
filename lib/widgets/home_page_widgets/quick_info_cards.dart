@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuickInfoCards extends StatelessWidget {
-  const QuickInfoCards({super.key, required this.text, required this.number});
+  const QuickInfoCards({
+    super.key,
+    required this.text,
+    required this.number,
+  });
 
   final String text;
   final int number;

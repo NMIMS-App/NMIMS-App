@@ -39,6 +39,7 @@ dependencies:
   flutter_switch: ^0.3.2
   syncfusion_flutter_pdfviewer: ^22.2.11
   firebase_auth: ^4.9.0
+  firebase_core: ^2.15.1
 
 dev_dependencies:
   flutter_test:
@@ -92,3 +93,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+intl: ^0.17.0

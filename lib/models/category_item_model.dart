@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nmims_app/screens/syllabus/syllabus.dart';
+import 'package:nmims_app/screens/assignments_screen.dart';
 import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class Category {
-
   Category({
     required this.categoryIcon,
     required this.categoryName,
@@ -14,8 +13,7 @@ class Category {
   IconData categoryIcon;
   StatefulWidget categoryScreen;
 }
-// TODO: Figure out how we can pass only the constructor.
-//       Constructing the object before it is required will take more RAM.
+
 final categories = [
   Category(
     categoryScreen: const TimeTable(),
@@ -23,9 +21,14 @@ final categories = [
     categoryIcon: Icons.touch_app,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const AssignmentsScreen(),
     categoryName: 'Assignments',
     categoryIcon: Icons.assignment,
+  ),
+  Category(
+    categoryScreen: const TimeTable(),
+    categoryName: 'Courses',
+    categoryIcon: Icons.class_,
   ),
   Category(
     categoryScreen: const TimeTable(),
@@ -38,13 +41,23 @@ final categories = [
     categoryIcon: Icons.table_chart,
   ),
   Category(
-    categoryScreen: const Syllabus(),
-    categoryName: 'Syllabus',
-    categoryIcon: Icons.book,
-  ),
-  Category(
     categoryScreen: const TimeTable(),
     categoryName: 'Results',
     categoryIcon: Icons.assessment,
+  ),
+  Category(
+    categoryScreen: const TimeTable(),
+    categoryName: 'Library',
+    categoryIcon: Icons.library_books,
+  ),
+  Category(
+    categoryScreen: const TimeTable(),
+    categoryName: 'Support',
+    categoryIcon: Icons.settings_applications,
+  ),
+  Category(
+    categoryScreen: const TimeTable(),
+    categoryName: 'Profile',
+    categoryIcon: Icons.person,
   ),
 ];

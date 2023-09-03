@@ -1,23 +1,23 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class CategoryItem extends StatelessWidget {
-
-  const CategoryItem({super.key, this.categoryName, this.categoryIcon, required this.categoryScreen});
+  const CategoryItem({
+    super.key,
+    this.categoryName,
+    this.categoryIcon,
+    required this.categoryScreen,
+  });
 
   final String? categoryName;
   final IconData? categoryIcon;
-  final StatefulWidget categoryScreen;
+  final Widget categoryScreen;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(40), // same as the container's radius
+      borderRadius: BorderRadius.circular(40),
       onTap: () {
-        // TODO: Handle tap action here.
-        print('$categoryName tapped!');
         Navigator.push(
           context,
           MaterialPageRoute(
