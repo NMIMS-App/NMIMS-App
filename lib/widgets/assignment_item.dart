@@ -4,25 +4,42 @@ import 'package:intl/intl.dart';
 
 class AssignmentItem extends StatelessWidget {
   const AssignmentItem({
-    super.key,
+    Key? key,
     required this.assignmentName,
     required this.assignmentDueDate,
     required this.assignmentSubmitted,
     required this.assignmentCourse,
-  });
+  }) : super(key: key);
 
   final String? assignmentName;
   final DateTime? assignmentDueDate;
   final bool? assignmentSubmitted;
   final String? assignmentCourse;
 
+  String getFormattedDayOfMonth(DateTime date) {
+    if (date.day >= 11 && date.day <= 13) {
+      return '${date.day}th';
+    }
+    switch (date.day % 10) {
+      case 1:
+        return '${date.day}st';
+      case 2:
+        return '${date.day}nd';
+      case 3:
+        return '${date.day}rd';
+      default:
+        return '${date.day}th';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    //
     final formattedDueTime = DateFormat("h:mm a").format(assignmentDueDate!);
-    final formattedAssignmentDate = DateFormat("E, d MMM").format(
-      assignmentDueDate!,
-    );
+
+    final formattedAssignmentDate =
+        DateFormat("E, ").format(assignmentDueDate!) +
+            getFormattedDayOfMonth(assignmentDueDate!) +
+            DateFormat(" MMM").format(assignmentDueDate!);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,14 +86,14 @@ class AssignmentItem extends StatelessWidget {
                   size: 32,
                 ), // Customize avatar icon
               ),
-              const SizedBox(width: 48),
+              const SizedBox(width: 32),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       assignmentCourse!,
-                      style: const TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -84,7 +101,7 @@ class AssignmentItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       assignmentName!,
-                      style: const TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -92,7 +109,7 @@ class AssignmentItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Text(
                       'Due at $formattedDueTime',
-                      style: const TextStyle(
+                      style: GoogleFonts.inter(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -103,7 +120,7 @@ class AssignmentItem extends StatelessWidget {
                       children: [
                         Text(
                           assignmentSubmitted! ? 'Submitted' : 'Not Submitted',
-                          style: TextStyle(
+                          style: GoogleFonts.inter(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                             color: assignmentSubmitted!
