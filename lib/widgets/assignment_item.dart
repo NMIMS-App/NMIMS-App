@@ -98,7 +98,6 @@ class AssignmentItem extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 8),
                     Text(
                       assignmentName!,
                       style: GoogleFonts.inter(
@@ -106,7 +105,6 @@ class AssignmentItem extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
                     Text(
                       'Due at $formattedDueTime',
                       style: GoogleFonts.inter(
@@ -114,7 +112,7 @@ class AssignmentItem extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -122,15 +120,11 @@ class AssignmentItem extends StatelessWidget {
                           assignmentSubmitted! ? 'Submitted' : 'Not Submitted',
                           style: GoogleFonts.inter(
                             fontSize: 16,
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w700,
                             color: assignmentSubmitted!
                                 ? Colors.green
                                 : Colors.red,
                           ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Submit'),
                         ),
                       ],
                     ),
