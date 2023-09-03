@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:nmims_app/models/category_item_model.dart';
+import 'package:nmims_app/screens/home/category_item_model.dart';
 import 'package:nmims_app/widgets/app_bar.dart';
-import 'package:nmims_app/widgets/category_item.dart';
-import 'package:nmims_app/widgets/home_page_widgets/quick_info_cards.dart';
+import 'package:nmims_app/widgets/home_screen_widgets/category_item.dart';
+import 'package:nmims_app/widgets/home_screen_widgets/quick_info_cards.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

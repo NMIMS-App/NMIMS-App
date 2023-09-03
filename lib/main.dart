@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nmims_app/screens/login/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:nmims_app/screens/home/home_page.dart';
+import 'package:nmims_app/screens/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,8 @@ void main() async {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: const LoginScreen(),
+        //change back to Login
+        home: const HomeScreen(),
       ),
     );
   });

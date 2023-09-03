@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nmims_app/screens/home/home_page.dart';
+import 'package:nmims_app/screens/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -194,15 +194,17 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: sapidController.text, password: passwordController.text).then((value) {
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: sapidController.text,
+                          password: passwordController.text)
+                      .then((value) {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (builder) => const HomePage(),
+                        builder: (builder) => const HomeScreen(),
                       ),
                     );
-                  }
-                  );
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,

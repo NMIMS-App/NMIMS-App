@@ -36,4 +36,25 @@ final assignments = [
     assignmentSubmitted: false,
     assignmentCourse: 'English',
   ),
+  Assignment(
+    assignmentName: 'Assignment 4',
+    assignmentLink: 'https://www.google.com',
+    assignmentDueDate: DateTime(2021, 12, 12), // 12/12/2021
+    assignmentSubmitted: true,
+    assignmentCourse: 'Android Development',
+  ),
+  Assignment(
+    assignmentName: 'Assignment 5',
+    assignmentLink: 'https://www.google.com',
+    assignmentDueDate: DateTime(2023, 11, 5), // 12/12/2021
+    assignmentSubmitted: false,
+    assignmentCourse: 'Maths',
+  ),
+  Assignment(
+    assignmentName: 'Assignment 6',
+    assignmentLink: 'https://www.google.com',
+    assignmentDueDate: DateTime(2021, 1, 3), // 12/12/2021
+    assignmentSubmitted: false,
+    assignmentCourse: 'English',
+  ),
 ];

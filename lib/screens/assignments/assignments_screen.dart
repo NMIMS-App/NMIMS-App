@@ -20,14 +20,19 @@ class _AssignmentsScreenState extends State<AssignmentsScreen> {
         appBar: const CustomAppBar(),
         body: Column(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             TabBar(
               dividerColor: Colors.transparent,
-              automaticIndicatorColorAdjustment: true,
               indicatorColor: Colors.black,
               labelColor: Colors.black,
               labelStyle: GoogleFonts.inter(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
+              ),
+              overlayColor: MaterialStateProperty.all(
+                Color.fromARGB(70, 0, 0, 0),
               ),
               unselectedLabelColor: Colors.grey,
               tabs: const [
@@ -83,7 +88,7 @@ class _AssignmentsScreenState extends State<AssignmentsScreen> {
         final assignment = assignments[index];
         return AssignmentItem(
           assignmentName: assignment.assignmentName,
-          assignmentDueDate: assignment.assignmentDueDate.toString(),
+          assignmentDueDate: assignment.assignmentDueDate,
           assignmentSubmitted: assignment.assignmentSubmitted,
           assignmentCourse: assignment.assignmentCourse,
         );
