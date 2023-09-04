@@ -7,16 +7,17 @@ import 'package:nmims_app/screens/home/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(
-      MaterialApp(
-        theme: ThemeData(
-          useMaterial3: true,
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (_) {
+      runApp(
+        MaterialApp(
+          theme: ThemeData(
+            useMaterial3: true,
+          ),
+          //change back to Login
+          home: const HomeScreen(),
         ),
-        //change back to Login
-        home: const HomeScreen(),
-      ),
-    );
-  });
+      );
+    },
+  );
 }

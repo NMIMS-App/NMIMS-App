@@ -91,6 +91,7 @@ class _AssignmentsScreenState extends State<AssignmentsScreen> {
           assignmentDueDate: assignment.assignmentDueDate,
           assignmentSubmitted: assignment.assignmentSubmitted,
           assignmentCourse: assignment.assignmentCourse,
+          assignmentInstructions: assignment.assignmentInstructions,
         );
       },
     );
