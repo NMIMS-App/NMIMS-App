@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nmims_app/screens/home/category_item_model.dart';
+import 'package:nmims_app/models/category_item_model.dart';
 import 'package:nmims_app/widgets/app_bar.dart';
 import 'package:nmims_app/widgets/home_screen_widgets/category_item.dart';
 import 'package:nmims_app/widgets/home_screen_widgets/quick_info_cards.dart';
