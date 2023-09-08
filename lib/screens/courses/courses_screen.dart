@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/models/courses_model.dart';
 import 'package:nmims_app/screens/courses/courses_details_screen.dart';
+import 'package:nmims_app/widgets/app_bar.dart';
 
 class CoursesScreen extends StatefulWidget {
   const CoursesScreen({super.key});
@@ -16,20 +18,20 @@ class _CoursesScreenState extends State<CoursesScreen> {
       courseId: 'OS111',
     ),
     const Course(
-      courseName: 'Artificial Intelligence',
-      courseId: 'AI112',
-    ),
-    const Course(
-      courseName: 'Image and Video Processing',
-      courseId: 'IVP113',
+      courseName: 'Data Structures',
+      courseId: 'DS111',
     ),
     const Course(
       courseName: 'Computer Networks',
-      courseId: 'CN114',
+      courseId: 'CN111',
+    ),
+    const Course(
+      courseName: 'Database Management Systems',
+      courseId: 'DBMS111',
     ),
     const Course(
       courseName: 'Software Engineering',
-      courseId: 'SE115',
+      courseId: 'SE111',
     ),
   ];
 
@@ -37,69 +39,81 @@ class _CoursesScreenState extends State<CoursesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Courses'),
+        title: Text(
+          'Courses',
+          style: GoogleFonts.inter(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.red[400],
       ),
-      body: ListView.builder(
-        itemCount: courses.length,
-        itemBuilder: (ctx, index) {
-          final course = courses[index];
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (builder) {
-                    return CoursesDetailsScreen(
-                      course: courses,
-                    );
-                  },
-                ),
-              );
-            },
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                // gradient: const LinearGradient(
-                //   colors: [
-                //     Color.fromARGB(255, 0, 136, 255),
-                //     Color.fromARGB(255, 0, 170, 255),
-                //   ],
-                //   begin: Alignment.topLeft,
-                //   end: Alignment.bottomRight,
-                // ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 24),
+        child: ListView.builder(
+          itemCount: courses.length,
+          itemBuilder: (ctx, index) {
+            final course = courses[index];
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (builder) {
+                      return CoursesDetailsScreen(
+                        course: course,
+                      );
+                    },
+                  ),
+                );
+              },
+              child: Card(
                 color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(99, 0, 0, 0),
-                    blurRadius: 2,
-                    spreadRadius: 0,
-                    offset: Offset(0, 4),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 8,
+                ),
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  side: BorderSide(
+                      color: Colors.grey[200]!), // Adding a subtle border
+                ),
+                child: ListTile(
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.grey[300],
+                    child: Icon(
+                      Icons.book,
+                      color: Colors.red[600],
+                    ),
                   ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
+                  title: Text(
                     course.courseName,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      height: 1.1,
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  Text(
+                  subtitle: Text(
                     course.courseId,
-                    style: const TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
+                      color: Colors.grey[700],
                     ),
                   ),
-                ],
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.red[400],
+                  ),
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

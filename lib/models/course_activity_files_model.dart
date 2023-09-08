@@ -1,0 +1,44 @@
+class CourseActivityFiles {
+  const CourseActivityFiles({
+    required this.courseName,
+    required this.courseId,
+    required this.courseActivityFileName,
+    required this.courseActivityTitle,
+    required this.dateAdded,
+    required this.fileSize,
+  });
+
+  final String courseName;
+  final String courseId;
+  final String courseActivityFileName;
+  final String courseActivityTitle;
+  final String dateAdded;
+  final String fileSize;
+}
+
+const files = [
+  CourseActivityFiles(
+    courseName: 'Operating Systems',
+    courseId: 'OS111',
+    courseActivityFileName: 'Java Stack Program',
+    courseActivityTitle: 'JavaStack.docx',
+    dateAdded: 'September 1, 2023',
+    fileSize: '2 MB',
+  ),
+  CourseActivityFiles(
+    courseName: 'Data Structures',
+    courseId: 'DS111',
+    courseActivityFileName: 'Java Queue Program',
+    courseActivityTitle: 'JavaQueue.pptx',
+    dateAdded: 'September 2, 2023',
+    fileSize: '3 MB',
+  ),
+  CourseActivityFiles(
+    courseName: 'Computer Networks',
+    courseId: 'CN111',
+    courseActivityFileName: 'Java Linked List Program',
+    courseActivityTitle: 'JavaLinkedList.pdf',
+    dateAdded: 'September 3, 2023',
+    fileSize: '4 MB',
+  ),
+];
