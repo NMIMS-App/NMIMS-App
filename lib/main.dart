@@ -18,7 +18,7 @@ void main() async {
             useMaterial3: true,
           ),
           //change back to Login
-          home: const HomeScreen(),
+          home: const LoginScreen(),
         ),
       );
     },

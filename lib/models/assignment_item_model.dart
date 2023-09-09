@@ -18,20 +18,22 @@ class Assignment {
 
 final assignments = [
   Assignment(
-      assignmentName: 'Assignment 1',
-      assignmentLink: 'https://www.google.com',
-      assignmentDueDate: DateTime(2021, 12, 12), // 12/12/2021
-      assignmentSubmitted: true,
-      assignmentCourse: 'Android Development',
-      assignmentInstructions:
-          'Create a simple app that displays a list of assignments'),
+    assignmentName: 'Assignment 1',
+    assignmentLink: 'https://www.google.com',
+    assignmentDueDate: DateTime(2021, 12, 12), // 12/12/2021
+    assignmentSubmitted: true,
+    assignmentCourse: 'Android Development',
+    assignmentInstructions:
+        'Create a simple app that displays a list of assignments',
+  ),
   Assignment(
-      assignmentName: 'Assignment 2',
-      assignmentLink: 'https://www.google.com',
-      assignmentDueDate: DateTime(2021, 11, 5), // 12/12/2021
-      assignmentSubmitted: false,
-      assignmentCourse: 'Maths',
-      assignmentInstructions: 'Solve the following questions: 1+1=?'),
+    assignmentName: 'Assignment 2',
+    assignmentLink: 'https://www.google.com',
+    assignmentDueDate: DateTime(2021, 11, 5), // 12/12/2021
+    assignmentSubmitted: false,
+    assignmentCourse: 'Maths',
+    assignmentInstructions: 'Solve the following questions: 1+1=?',
+  ),
   Assignment(
     assignmentName: 'Assignment 3',
     assignmentLink: 'https://www.google.com',

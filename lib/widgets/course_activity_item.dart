@@ -79,7 +79,7 @@ class CourseActivityItem extends StatelessWidget {
               ),
               ListView.builder(
                 shrinkWrap: true,
-                itemCount: files.length,
+                itemCount: 1,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8),
@@ -90,6 +90,24 @@ class CourseActivityItem extends StatelessWidget {
                   );
                 },
               ),
+              Row(
+                children: [
+                  TextButton.icon(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.comment,
+                      size: 20,
+                      color: Colors.black,
+                    ),
+                    label: Text(
+                      'Comments',
+                      style: GoogleFonts.inter(
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),

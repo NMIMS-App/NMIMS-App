@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
+import 'package:nmims_app/screens/profile/profile_screen.dart';
+import 'package:nmims_app/screens/support/support_screen.dart';
 import 'package:nmims_app/screens/timetable/timetable.dart';
 
 class Category {
@@ -52,12 +54,12 @@ final categories = [
     categoryIcon: Icons.library_books,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const SupportScreen(),
     categoryName: 'Support',
     categoryIcon: Icons.settings_applications,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const ProfileScreen(),
     categoryName: 'Profile',
     categoryIcon: Icons.person,
   ),
