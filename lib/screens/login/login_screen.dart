@@ -12,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController sapidController = TextEditingController();
+  final TextEditingController sapIdController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     child: TextFormField(
-                      controller: sapidController,
+                      controller: sapIdController,
                       decoration: const InputDecoration(
                         hintText: 'SAP ID',
                         border: InputBorder.none,
@@ -196,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
-                          email: sapidController.text,
+                          email: sapIdController.text,
                           password: passwordController.text)
                       .then((value) {
                     Navigator.of(context).push(
