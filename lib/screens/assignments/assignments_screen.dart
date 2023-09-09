@@ -32,7 +32,7 @@ class _AssignmentsScreenState extends State<AssignmentsScreen> {
                 fontWeight: FontWeight.w600,
               ),
               overlayColor: MaterialStateProperty.all(
-                Color.fromARGB(70, 0, 0, 0),
+                const Color.fromARGB(70, 0, 0, 0),
               ),
               unselectedLabelColor: Colors.grey,
               tabs: const [
