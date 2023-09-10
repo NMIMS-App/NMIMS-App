@@ -12,17 +12,17 @@ class CourseActivityFiles {
   final String courseId;
   final String courseActivityFileName;
   final String courseActivityTitle;
-  final String dateAdded;
+  final DateTime dateAdded;
   final String fileSize;
 }
 
-const files = [
+final files = [
   CourseActivityFiles(
     courseName: 'Operating Systems',
     courseId: 'OS111',
     courseActivityFileName: 'OSProgram.docx',
     courseActivityTitle: 'OS',
-    dateAdded: 'September 1, 2023',
+    dateAdded: DateTime(2023, 1, 1),
     fileSize: '2 MB',
   ),
   CourseActivityFiles(
@@ -30,7 +30,7 @@ const files = [
     courseId: 'OS111',
     courseActivityFileName: 'OS_Progam_2.docx',
     courseActivityTitle: 'OS2',
-    dateAdded: 'September 1, 2023',
+    dateAdded: DateTime(2023, 2, 1),
     fileSize: '2 MB',
   ),
   CourseActivityFiles(
@@ -38,7 +38,7 @@ const files = [
     courseId: 'DS111',
     courseActivityFileName: 'Java Queue Program.pptx',
     courseActivityTitle: 'JavaQueue',
-    dateAdded: 'September 2, 2023',
+    dateAdded: DateTime(2023, 3, 1),
     fileSize: '3 MB',
   ),
   CourseActivityFiles(
@@ -46,7 +46,7 @@ const files = [
     courseId: 'CN111',
     courseActivityFileName: 'CNProgram.pdf',
     courseActivityTitle: 'CN',
-    dateAdded: 'September 3, 2023',
+    dateAdded: DateTime(2023, 4, 1),
     fileSize: '4 MB',
   ),
   CourseActivityFiles(
@@ -54,7 +54,7 @@ const files = [
     courseId: 'CN111',
     courseActivityFileName: 'CNProgram2.pdf',
     courseActivityTitle: 'CN2',
-    dateAdded: 'September 3, 2023',
+    dateAdded: DateTime(2023, 5, 1),
     fileSize: '4 MB',
   ),
 ];

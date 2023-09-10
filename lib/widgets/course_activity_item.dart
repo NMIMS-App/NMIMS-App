@@ -78,6 +78,7 @@ class CourseActivityItem extends StatelessWidget {
                 height: 12,
               ),
               ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: 1,
                 itemBuilder: (context, index) {
