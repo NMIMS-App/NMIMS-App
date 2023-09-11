@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,11 +15,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.studentCourse,
   }) : super(key: key);
 
-  Future<Map<String, dynamic>?> fetchStudentData(String documentID) async {
+  Future<Map<String, dynamic>?> fetchStudentData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      String uid = user.uid;
     try {
       DocumentSnapshot snapshot = await FirebaseFirestore.instance
           .collection('students')
-          .doc(documentID)
+          .doc(uid)
           .get();
 
       if (snapshot.exists) {
@@ -34,12 +39,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       return null;
     }
   }
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Map<String, dynamic>?>(
       // ToDo: Replace the documentID with the Current active user's UID
-        future: fetchStudentData('eyYTfU95PlXy2B49nmiV8LYAx5s2'),
+        future: fetchStudentData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return AppBar(
@@ -137,13 +143,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               );
             } else {
               return AppBar(
-                title: Text('Student document not found or an error occurred.'),
+                title: const Text('Student document not found or an error occurred.'),
                 // Other AppBar properties here
               );
             }
           } else {
             return AppBar(
-              title: Text('No data available.'),
+              title: const Text('User has not Authenticated.'),
               // Other AppBar properties here
             );
           }
