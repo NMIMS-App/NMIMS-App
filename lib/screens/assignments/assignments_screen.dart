@@ -17,7 +17,7 @@ class _AssignmentsScreenState extends State<AssignmentsScreen> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: const CustomAppBar(),
+        appBar: CustomAppBar(),
         body: Column(
           children: [
             const SizedBox(
