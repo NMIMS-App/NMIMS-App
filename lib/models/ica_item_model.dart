@@ -23,7 +23,7 @@ class ICA {
   bool icaVisibility;
 }
 
-final assignments = [
+final ica = [
   ICA(
     icaCourse: 'Mobile Application Development',
     icaYear: 2023,
