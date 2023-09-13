@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nmims_app/models/tabular_attendance_item_model.dart';
 class Tabularstudent extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => Tabularstudentstate();
@@ -12,7 +13,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
 
   bool isvisible=false;
 
-  var tabular=[['Mobile Application Development ','05/05/2023','11:00 am - 12:00 pm','P'],['Software Engineering','12/05/2023','10:00 am - 11:00 am','A'],['Artificial Intelligence','24/06/2023','09:00 am - 10:00 am','P'],['Deep Learning','30/07/2023','11:00 am - 12:00 pm','P'],['Image and Video Processing','03/08/2023','01:00 pm - 02:00 pm','P'],['Cryptography','12/09/2023','09:00 am - 10:00 am','A']];
+  // var tabular=[['Mobile Application Development ','05/05/2023','11:00 am - 12:00 pm','P'],['Software Engineering','12/05/2023','10:00 am - 11:00 am','A'],['Artificial Intelligence','24/06/2023','09:00 am - 10:00 am','P'],['Deep Learning','30/07/2023','11:00 am - 12:00 pm','P'],['Image and Video Processing','03/08/2023','01:00 pm - 02:00 pm','P'],['Cryptography','12/09/2023','09:00 am - 10:00 am','A']];
 
 
 
@@ -213,7 +214,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
                               margin: EdgeInsets.only(top:15),
                               width: MediaQuery.of(context).size.width,
                               height: (MediaQuery.of(context).size.height)/20,
-                              child:Text((tabular[index][0]).toString(), textAlign: TextAlign.center,style: TextStyle(
+                              child:Text((t_attendance[index].subject), textAlign: TextAlign.center,style: TextStyle(
                                 color:Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -239,14 +240,14 @@ class Tabularstudentstate extends State<Tabularstudent>{
 
                                 Container(
                                   width:((MediaQuery. of(context). size. width)/4.5),
-                                  margin: EdgeInsets.only(top:15),
+                                  //margin: EdgeInsets.only(top:15),
                                   height:50,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
                                     border: Border.all(color: Colors.black38,width: 1.4),
                                   ),
                                   child: Center(
-                                    child:Text(tabular[index][1],style: TextStyle(
+                                    child:Text("${t_attendance[index].date.day}/${t_attendance[index].date.month}/${t_attendance[index].date.year}",style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),),
                                   ),
@@ -260,7 +261,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
                                     border: Border.all(color: Colors.black38,width: 1.4),
                                   ),
                                   child: Center(
-                                    child:Text(tabular[index][2],style: TextStyle(
+                                    child:Text(t_attendance[index].time.toString(),style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),textAlign: TextAlign.center,),
                                   ),
@@ -275,11 +276,11 @@ class Tabularstudentstate extends State<Tabularstudent>{
                                           height:50,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(Radius.circular(30)),
-                                            border: Border.all(color: tabular[index][3]=='P'?Colors.black:Colors.red ,width: 3.5),
+                                            border: Border.all(color: t_attendance[index].pa=='P'?Colors.black:Colors.red ,width: 3.5),
                                           ),
                                           child: Center(
-                                            child:Text(tabular[index][3],style: TextStyle(
-                                              color: tabular[index][3] =='P'? Colors.black : Colors.red,
+                                            child:Text(t_attendance[index].pa,style: TextStyle(
+                                              color: t_attendance[index].pa=='P'? Colors.black : Colors.red,
                                               fontSize: 19,
                                               fontWeight: FontWeight.bold,
                                             ),),
@@ -293,7 +294,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
                         ),
                       );
                     },
-                      itemCount: tabular.length,
+                      itemCount: t_attendance.length,
                       separatorBuilder: (context,index){
                         return Divider(thickness: 1);
                       },

@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:nmims_app/models/summary_attendance_item_model.dart';
 class Summary2 extends StatelessWidget{
   const Summary2 ({Key ? key}): super (key:key);
 
   @override
   Widget build(BuildContext context) {
-    List<List<Object>> arrnames=[['supervisory control and data acquisition',3,2],['Mobile Application Development',5,5],['Computer Networks',2,0],['Artificial Intelligence',6,3],['Image and Video Processing',4,4],['Operating Systems',7,6],['Probability and Statistics',6,6]];
-    for (int i=0;i<arrnames.length;i++){
-      int j=int.parse((arrnames[i][1]).toString());
-      int k=int.parse((arrnames[i][2]).toString());
-      double p= double.parse((k*100/j).toStringAsFixed(1));
-      if((p*10)%10==0){
-        arrnames[i].add(p.toInt());
-      }
-      else {
-        arrnames[i].add(p);
-      }
-    }
+    // List<List<Object>> arrnames=[['supervisory control and data acquisition',3,2],['Mobile Application Development',5,5],['Computer Networks',2,0],['Artificial Intelligence',6,3],['Image and Video Processing',4,4],['Operating Systems',7,6],['Probability and Statistics',6,6]];
+    // for (int i=0;i<arrnames.length;i++){
+    //   int j=int.parse((arrnames[i][1]).toString());
+    //   int k=int.parse((arrnames[i][2]).toString());
+    //   double p= double.parse((k*100/j).toStringAsFixed(1));
+    //   if((p*10)%10==0){
+    //     arrnames[i].add(p.toInt());
+    //   }
+    //   else {
+    //     arrnames[i].add(p);
+    //   }
+    // }
     return Scaffold(
-        appBar: AppBar(title: Text("Summary2"),),
+        appBar: AppBar(title: Text("Summary Data"),),
         body: Center(
             child:Container(
                 child:Column(
@@ -104,7 +105,7 @@ class Summary2 extends StatelessWidget{
                                         width:MediaQuery.of(context).size.width,
                                         height: (MediaQuery.of(context).size.height)/20,
                                         // color: Colors.white,
-                                        child:Text((arrnames[index][0]).toString(), textAlign: TextAlign.center,style: TextStyle(
+                                        child:Text(attendance[index].subject, textAlign: TextAlign.center,style: TextStyle(
                                           color:Colors.black,
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -150,7 +151,7 @@ class Summary2 extends StatelessWidget{
                                                           ),],
                                                       ),
                                                       child:Center(
-                                                          child:Text((arrnames[index][1]).toString(), textAlign: TextAlign.center,style: TextStyle(
+                                                          child:Text((attendance[index].totallecs).toString(), textAlign: TextAlign.center,style: TextStyle(
                                                             color:Colors.black,
                                                             fontSize: 23,
                                                             fontWeight: FontWeight.w400,
@@ -184,7 +185,7 @@ class Summary2 extends StatelessWidget{
                                                           ),],
                                                       ),
                                                       child:Center(
-                                                          child:Text((arrnames[index][2]).toString(), textAlign: TextAlign.center,style: TextStyle(
+                                                          child:Text((attendance[index].presentlecs).toString(), textAlign: TextAlign.center,style: TextStyle(
                                                             color:Colors.black,
                                                             fontSize: 23,
                                                             fontWeight: FontWeight.w400,
@@ -205,14 +206,14 @@ class Summary2 extends StatelessWidget{
                                                       width:70,
                                                       height:70,
                                                       decoration: BoxDecoration(
-                                                        color: (double.parse((arrnames[index][3]).toString())) >= 80.0 ? Colors.transparent: Colors.red,
-                                                        border: (double.parse((arrnames[index][3]).toString())) >= 80.0 ? Border.all(color: Colors.black,width: 2.5):Border.all(color: Colors.red,width: 2.5),
+                                                        color: (double.parse((attendance[index].presentlecs*100/attendance[index].totallecs).toString())) >= 80.0 ? Colors.transparent: Colors.red,
+                                                        border: (double.parse((attendance[index].presentlecs*100/attendance[index].totallecs).toString())) >= 80.0 ? Border.all(color: Colors.black,width: 2.5):Border.all(color: Colors.red,width: 2.5),
                                                         boxShadow: [
                                                           BoxShadow(
                                                             color: Colors.black,
                                                           ),
                                                           BoxShadow(
-                                                            color:(double.parse((arrnames[index][3]).toString())) >= 80.0 ? Colors.white : Colors.red,
+                                                            color:(double.parse((attendance[index].presentlecs*100/attendance[index].totallecs).toString())) >= 80.0 ? Colors.white : Colors.red,
                                                             spreadRadius: -0.1,
                                                             blurRadius: 5.0,
                                                           ),],
@@ -220,8 +221,8 @@ class Summary2 extends StatelessWidget{
 
                                                       ),
                                                       child:Center(
-                                                          child:Text((arrnames[index][3]).toString(), textAlign: TextAlign.center,style: TextStyle(
-                                                            color: (double.parse((arrnames[index][3]).toString())) >= 80.0 ?Colors.black:Colors.white,
+                                                          child:Text((attendance[index].presentlecs*100/attendance[index].totallecs).toStringAsFixed(1), textAlign: TextAlign.center,style: TextStyle(
+                                                            color: (double.parse((attendance[index].presentlecs*100/attendance[index].totallecs).toString())) >= 80.0 ?Colors.black:Colors.white,
                                                             fontSize: 23,
                                                             fontWeight: FontWeight.w500,
                                                           ),)
@@ -237,7 +238,7 @@ class Summary2 extends StatelessWidget{
 
 
                             },
-                              itemCount: (arrnames.length),
+                              itemCount: (attendance.length),
                               separatorBuilder: (context,index){
                                 return Divider(thickness: 1,);
                               },

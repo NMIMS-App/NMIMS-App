@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nmims_app/models/student_list_item_model.dart';
 
 class StudentList extends StatefulWidget{
   var c,s,d,t;
@@ -12,7 +13,7 @@ class StudentListState extends State<StudentList>{
   var c,s,d,t;
   StudentListState(this.c,this.s,this.d,this.t);
 
-  var students = [["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P']];
+  // var student = [["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P'],["B001","John Doe",70022100001,'P']];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,38 +61,38 @@ class StudentListState extends State<StudentList>{
                             border: Border.all(color: Colors.black,width: 0.7),
                             borderRadius: BorderRadius.all(Radius.circular(10))
                         ),
-                        child: Text((students[index][0]).toString(),style: TextStyle(
+                        child: Text(students[index].rollno,style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),),
                       ),
-                      title: Text((students[index][1]).toString(),style: TextStyle(
+                      title: Text(students[index].name,style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                       )),
-                      subtitle: Text((students[index][2]).toString()),
+                      subtitle: Text((students[index].sap).toString()),
                       trailing:SizedBox(
                         width: 60,
                         height: 60,
 
                         child: ElevatedButton(
                           onPressed: (){
-                            if(students[index][3]=="P"){
-                              students[index][3]="A";
+                            if(students[index].pa=="P"){
+                              students[index].pa="A";
                               setState(() {
 
                               });
                             }
 
-                            else if(students[index][3]=="A"){
-                              students[index][3]="P";
+                            else if(students[index].pa=="A"){
+                              students[index].pa="P";
                               setState(() {
 
                               });
                             }
                           },
 
-                          child: Text((students[index][3]).toString(),style: TextStyle(
+                          child: Text((students[index].pa).toString(),style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -100,7 +101,7 @@ class StudentListState extends State<StudentList>{
 
                           style: ElevatedButton.styleFrom(
                             elevation: 7,
-                            backgroundColor: students[index][3]=="P"? Colors.green:Colors.red,
+                            backgroundColor: students[index].pa=="P"? Colors.green:Colors.red,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50),
                             ),
