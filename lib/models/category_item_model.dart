@@ -4,6 +4,7 @@ import 'package:nmims_app/screens/courses/courses_screen.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
 import 'package:nmims_app/screens/support/support_screen.dart';
 import 'package:nmims_app/screens/timetable/timetable.dart';
+import 'package:nmims_app/screens/attendance/studentattendance.dart';
 
 class Category {
   Category({
@@ -19,7 +20,7 @@ class Category {
 
 final categories = [
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const StudentAttendance(),
     categoryName: 'Attendance',
     categoryIcon: Icons.touch_app,
   ),
