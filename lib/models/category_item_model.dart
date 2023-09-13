@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
+import 'package:nmims_app/screens/logout/logout.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
 import 'package:nmims_app/screens/results/results_screen.dart';
 import 'package:nmims_app/screens/support/support_screen.dart';
@@ -50,11 +51,11 @@ final categories = [
     categoryName: 'Results',
     categoryIcon: Icons.assessment,
   ),
-  Category(
-    categoryScreen: const TimeTable(),
-    categoryName: 'Library',
-    categoryIcon: Icons.library_books,
-  ),
+  // Category(
+  //   categoryScreen: const TimeTable(),
+  //   categoryName: 'Library',
+  //   categoryIcon: Icons.library_books,
+  // ),
   Category(
     categoryScreen: const SupportScreen(),
     categoryName: 'Support',
@@ -65,4 +66,10 @@ final categories = [
     categoryName: 'Profile',
     categoryIcon: Icons.person,
   ),
+  //logout category
+  Category(
+    categoryIcon: Icons.logout,
+    categoryName: 'Log out',
+    categoryScreen: const Logout(),
+  )
 ];
