@@ -20,7 +20,7 @@ class Category {
 
 final categories = [
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const TimeTable(), //ToDo: Change this to AttendanceScreen after Nikita's PR
     categoryName: 'Attendance',
     categoryIcon: Icons.touch_app,
   ),
@@ -35,7 +35,7 @@ final categories = [
     categoryIcon: Icons.class_,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const TimeTable(), //TODO: Change this to Announcements Screen
     categoryName: 'Announcements',
     categoryIcon: Icons.notifications,
   ),
@@ -50,7 +50,7 @@ final categories = [
     categoryIcon: Icons.assessment,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const TimeTable(), //TODO: Change this to Library Screen
     categoryName: 'Library',
     categoryIcon: Icons.library_books,
   ),

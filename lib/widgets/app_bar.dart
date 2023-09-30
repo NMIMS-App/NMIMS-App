@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../screens/profile/profile_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? studentFullName;
@@ -73,7 +74,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         size: 30,
                       ),
                       onPressed: () {
-                        // Add your assignments icon tap logic here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                        );
                       },
                     ),
                     const SizedBox(width: 8),
