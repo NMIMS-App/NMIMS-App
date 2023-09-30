@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
+import 'package:nmims_app/screens/results/results_screen.dart';
 import 'package:nmims_app/screens/support/support_screen.dart';
 import 'package:nmims_app/screens/timetable/timetable.dart';
 
@@ -44,7 +45,7 @@ final categories = [
     categoryIcon: Icons.table_chart,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const ResultsScreen(),
     categoryName: 'Results',
     categoryIcon: Icons.assessment,
   ),

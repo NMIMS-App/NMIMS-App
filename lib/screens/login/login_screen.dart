@@ -14,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController sapIdController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _rememberMe = false;
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -122,16 +124,28 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: TextFormField(
                       controller: passwordController,
-                      decoration: const InputDecoration(
+                      obscureText:
+                          !_isPasswordVisible, // Toggle password visibility
+                      decoration: InputDecoration(
                         hintText: 'Password',
                         border: InputBorder.none,
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.black,
                         ),
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.black,
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                          child: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons
+                                    .visibility_off, // Toggle icon based on password visibility
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
