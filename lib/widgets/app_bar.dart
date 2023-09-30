@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? studentSemester;
   final String? studentCourse;
 
-  CustomAppBar({
+  const CustomAppBar({
     Key? key,
     this.studentFullName,
     this.studentSemester,
