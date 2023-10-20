@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
+import 'package:nmims_app/screens/logout/logout.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
 import 'package:nmims_app/screens/results/results_screen.dart';
 import 'package:nmims_app/screens/support/support_screen.dart';
@@ -20,7 +21,8 @@ class Category {
 
 final categories = [
   Category(
-    categoryScreen: const TimeTable(), //ToDo: Change this to AttendanceScreen after Nikita's PR
+    categoryScreen:
+        const TimeTable(), //ToDo: Change this to AttendanceScreen after Nikita's PR
     categoryName: 'Attendance',
     categoryIcon: Icons.touch_app,
   ),
@@ -35,7 +37,8 @@ final categories = [
     categoryIcon: Icons.class_,
   ),
   Category(
-    categoryScreen: const TimeTable(), //TODO: Change this to Announcements Screen
+    categoryScreen:
+        const TimeTable(), //TODO: Change this to Announcements Screen
     categoryName: 'Announcements',
     categoryIcon: Icons.notifications,
   ),
@@ -49,11 +52,11 @@ final categories = [
     categoryName: 'Results',
     categoryIcon: Icons.assessment,
   ),
-  Category(
-    categoryScreen: const TimeTable(), //TODO: Change this to Library Screen
-    categoryName: 'Library',
-    categoryIcon: Icons.library_books,
-  ),
+  // Category(
+  //   categoryScreen: const TimeTable(),
+  //   categoryName: 'Library',
+  //   categoryIcon: Icons.library_books,
+  // ),
   Category(
     categoryScreen: const SupportScreen(),
     categoryName: 'Support',
@@ -64,4 +67,10 @@ final categories = [
     categoryName: 'Profile',
     categoryIcon: Icons.person,
   ),
+  //logout category
+  Category(
+    categoryIcon: Icons.logout,
+    categoryName: 'Log out',
+    categoryScreen: const Logout(),
+  )
 ];

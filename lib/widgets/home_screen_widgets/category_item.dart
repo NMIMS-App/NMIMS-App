@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nmims_app/screens/logout/logout.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({
@@ -18,12 +19,16 @@ class CategoryItem extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(40),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => categoryScreen,
-          ),
-        );
+        if (categoryName == 'Log out') {
+          const Logout().logout(context);
+        } else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => categoryScreen,
+            ),
+          );
+        }
       },
       child: Container(
         decoration: BoxDecoration(
