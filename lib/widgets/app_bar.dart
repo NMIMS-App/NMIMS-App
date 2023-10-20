@@ -40,6 +40,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       return null;
     }
   }
+    return null;
   }
 
   @override
