@@ -98,7 +98,7 @@ class Summary2 extends StatelessWidget{
                             child:ListView.separated(itemBuilder: (context,index){
                               return Container(
                                 width: MediaQuery.of(context).size.width,
-                                height: ((MediaQuery.of(context).size.height)/20)+90+15,
+                                height: ((MediaQuery.of(context).size.height)/20)+90+5,
                                 child: Column(
                                   children: [
                                     Container(

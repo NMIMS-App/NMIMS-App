@@ -126,17 +126,8 @@ class Tabularstudentstate extends State<Tabularstudent>{
                   padding: EdgeInsets.all(5),
                   margin: EdgeInsets.only(top: 20,bottom: 20),
                   decoration: BoxDecoration(
-                    // color:Color.fromRGBO(113,113,112,1),
-                    color: Color.fromRGBO(211,211,211,1),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45,
-                        blurRadius: 8.0, // soften the shadow
-                        spreadRadius: 0.1, //extend the shadow
-
-                      )
-                    ],
+                      color:Color.fromRGBO(113,113,112,1),
+                      borderRadius: BorderRadius.all(Radius.circular(8))
                   ),
                   width:((MediaQuery. of(context). size. width)/4.5),
                   height:80,
@@ -144,23 +135,27 @@ class Tabularstudentstate extends State<Tabularstudent>{
                       alignment: Alignment.center,
                       child:Text('Date', textAlign: TextAlign.center,style: TextStyle(
                         fontSize: 20,
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontWeight: FontWeight.w900,
                       ),))
               ),
               Container(
                   margin: EdgeInsets.only(top: 20,bottom: 20),
+                  // decoration: BoxDecoration(
+                  //   // color:Color.fromRGBO(113,113,112,1),
+                  //     color: Color.fromRGBO(211,211,211,1),
+                  //     boxShadow: [
+                  //       BoxShadow(
+                  //         color: Colors.black45,
+                  //         blurRadius: 8.0, // soften the shadow
+                  //         spreadRadius: 0.1, //extend the shadow
+                  //
+                  //       )
+                  //     ],
+                  //     borderRadius: BorderRadius.all(Radius.circular(8))
+                  // ),
                   decoration: BoxDecoration(
-                    // color:Color.fromRGBO(113,113,112,1),
-                      color: Color.fromRGBO(211,211,211,1),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black45,
-                          blurRadius: 8.0, // soften the shadow
-                          spreadRadius: 0.1, //extend the shadow
-
-                        )
-                      ],
+                      color:Color.fromRGBO(113,113,112,1),
                       borderRadius: BorderRadius.all(Radius.circular(8))
                   ),
                   width:((MediaQuery. of(context). size. width)/4.5),
@@ -168,30 +163,34 @@ class Tabularstudentstate extends State<Tabularstudent>{
                   child:Center(
                       child:Text('Time', textAlign: TextAlign.center,style: TextStyle(
                         fontSize: 20,
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontWeight: FontWeight.w900,
                       ),))
               ),
               Container(
                   margin: EdgeInsets.only(top: 20,bottom: 20),
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromRGBO(211,211,211,1),
+                  //   borderRadius: BorderRadius.all(Radius.circular(8)),
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.black45,
+                  //       blurRadius: 8.0, // soften the shadow
+                  //       spreadRadius: 0.1, //extend the shadow
+                  //
+                  //     )
+                  //   ],
+                  // ),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(211,211,211,1),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black45,
-                        blurRadius: 8.0, // soften the shadow
-                        spreadRadius: 0.1, //extend the shadow
-
-                      )
-                    ],
+                      color:Color.fromRGBO(113,113,112,1),
+                      borderRadius: BorderRadius.all(Radius.circular(8))
                   ),
                   width:((MediaQuery. of(context). size. width)/5),
                   height:80,
                   child:Center(
                       child:Text('P / A', textAlign: TextAlign.center,style: TextStyle(
                         fontSize: 20,
-                        color: Colors.black54,
+                        color: Colors.white,
                         fontWeight: FontWeight.w900,
                       ),))
               ),
@@ -207,7 +206,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
                     child: ListView.separated(itemBuilder: (context,index){
                       return Container(
                         width: MediaQuery.of(context).size.width,
-                        height: ((MediaQuery.of(context).size.height)/20)+8+90,
+                        height: ((MediaQuery.of(context).size.height)/20)+8+75,
                         child: Column(
                           children: [
                             Container(
