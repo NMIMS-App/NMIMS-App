@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/screens/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -14,6 +15,57 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController sapIdController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool _rememberMe = false;
+  bool _isPasswordVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadRememberMeState().then((value) {
+      if (value) {
+        _autoLogin();
+      }
+    });
+  }
+
+  Future<bool> _loadRememberMeState() async {
+    final prefs = await SharedPreferences.getInstance();
+    final rememberMe = prefs.getBool('rememberMe') ?? false;
+    return rememberMe;
+  }
+
+  Future<void> _saveRememberMeState(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('rememberMe', value);
+  }
+
+  Future<void> _autoLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    final sapId = prefs.getString('sapId');
+    final password = prefs.getString('password');
+
+    if (sapId != null && password != null) {
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: sapId,
+          password: password,
+        );
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (builder) => const HomeScreen(),
+          ),
+        );
+      } catch (e) {
+        // Handle login error if necessary
+        const snackBar = SnackBar(
+          content:
+              Text('Authentication failed. Please check your credentials.'),
+          duration: Duration(seconds: 3),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    child: TextFormField(
+                    child: TextField(
                       controller: sapIdController,
                       decoration: const InputDecoration(
                         hintText: 'SAP ID',
@@ -78,6 +130,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.black,
                         ),
                       ),
+                      keyboardType: TextInputType.emailAddress,
+                      // Autofill hint for username
+                      autofillHints: const [AutofillHints.username],
                     ),
                   ),
                 ],
@@ -120,20 +175,33 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    child: TextFormField(
+                    child: TextField(
                       controller: passwordController,
-                      decoration: const InputDecoration(
+                      obscureText: !_isPasswordVisible,
+                      decoration: InputDecoration(
                         hintText: 'Password',
                         border: InputBorder.none,
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock,
                           color: Colors.black,
                         ),
-                        suffixIcon: Icon(
-                          Icons.visibility_off,
-                          color: Colors.black,
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                          child: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
+                      keyboardType: TextInputType.visiblePassword,
+                      // Autofill hint for password
+                      autofillHints: const [AutofillHints.password],
                     ),
                   ),
                   Row(
@@ -171,8 +239,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: FittedBox(
                       fit: BoxFit.contain,
                       child: CupertinoSwitch(
-                        value: true,
-                        onChanged: (value) {},
+                        value: _rememberMe,
+                        onChanged: (value) async {
+                          setState(() {
+                            _rememberMe = value;
+                          });
+                          _saveRememberMeState(_rememberMe);
+                        },
                         activeColor: Colors.red,
                       ),
                     ),
@@ -193,17 +266,24 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 25,
               ),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: sapIdController.text,
                           password: passwordController.text)
                       .then((value) {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (builder) => const HomeScreen(),
                       ),
                     );
+                  }).catchError((error) {
+                    const snackBar = SnackBar(
+                      content: Text(
+                          'Authentication failed. Please check your credentials.'),
+                      duration: Duration(seconds: 3),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   });
                 },
                 style: ElevatedButton.styleFrom(
