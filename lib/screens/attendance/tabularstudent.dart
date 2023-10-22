@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/models/tabular_attendance_item_model.dart';
 class Tabularstudent extends StatefulWidget {
+  const Tabularstudent({super.key});
+
   @override
   State<StatefulWidget> createState() => Tabularstudentstate();
 }
@@ -38,7 +40,7 @@ class Tabularstudentstate extends State<Tabularstudent>{
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text('From: ${startdate}',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 16)),
+                    Text('From: $startdate',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 16)),
                     IconButton(onPressed: ()async{
                       DateTime? datepicked = await showDatePicker(
                           context: context,

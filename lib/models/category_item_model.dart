@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
+import 'package:nmims_app/screens/attendance/studentattendance.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
 import 'package:nmims_app/screens/logout/logout.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
@@ -22,7 +23,8 @@ class Category {
 final categories = [
   Category(
     categoryScreen:
-        const TimeTable(), //ToDo: Change this to AttendanceScreen after Nikita's PR
+        const StudentAttendance(),
+        // const TimeTable(), //ToDo: Change this to AttendanceScreen after Nikita's PR
     categoryName: 'Attendance',
     categoryIcon: Icons.touch_app,
   ),
