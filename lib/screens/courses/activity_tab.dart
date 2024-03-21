@@ -5,7 +5,7 @@ import 'package:nmims_app/models/courses_model.dart';
 import 'package:nmims_app/widgets/course_activity_item.dart';
 
 class ActivityTab extends StatefulWidget {
-  const ActivityTab({super.key, required this.course});
+  const ActivityTab({super.key, required this.course, required ScrollController scrollController});
 
   final Course course;
 

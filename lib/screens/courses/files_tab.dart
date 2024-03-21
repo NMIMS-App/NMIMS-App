@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nmims_app/models/course_activity_files_model.dart';
 import 'package:nmims_app/models/courses_model.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 
 class FilesTab extends StatefulWidget {
-  const FilesTab({Key? key, required this.course}) : super(key: key);
+  const FilesTab({Key? key, required this.course, required ScrollController scrollController}) : super(key: key);
   final Course course;
   @override
   _FilesTabState createState() => _FilesTabState();
@@ -173,7 +174,9 @@ class _FilesTabState extends State<FilesTab> {
                             ),
                           ],
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          launchFile(file.courseActivityFileName, file.fileUrl);
+                        },
                       ),
                     );
                   },
@@ -183,6 +186,40 @@ class _FilesTabState extends State<FilesTab> {
                   : const Center(child: Text('Loading files...')),
         ),
       ],
+    );
+  }
+
+  Future<void> launchFile(String fileName, String fileUrl) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PDFViewerScreen(
+          fileName: fileName,
+          fileUrl: fileUrl,
+        ),
+      ),
+    );
+  }
+}
+
+class PDFViewerScreen extends StatelessWidget {
+  const PDFViewerScreen({Key? key, required this.fileName, required this.fileUrl}) : super(key: key);
+
+  final String fileName;
+  final String fileUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(fileName),
+      ),
+      body: PDFView(
+        filePath: fileUrl,
+        onError: (error) {
+          print(error);
+        },
+      ),
     );
   }
 }

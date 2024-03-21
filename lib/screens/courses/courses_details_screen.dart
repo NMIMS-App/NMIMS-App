@@ -6,9 +6,9 @@ import 'package:nmims_app/screens/courses/files_tab.dart';
 
 class CoursesDetailsScreen extends StatefulWidget {
   const CoursesDetailsScreen({
-    super.key,
+    Key? key,
     required this.course,
-  });
+  }) : super(key: key);
 
   final Course course;
 
@@ -17,6 +17,23 @@ class CoursesDetailsScreen extends StatefulWidget {
 }
 
 class _CoursesDetailsScreenState extends State<CoursesDetailsScreen> {
+  late final ScrollController _activityTabController;
+  late final ScrollController _filesTabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _activityTabController = ScrollController();
+    _filesTabController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _activityTabController.dispose();
+    _filesTabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -78,8 +95,8 @@ class _CoursesDetailsScreenState extends State<CoursesDetailsScreen> {
             ),
             child: TabBarView(
               children: [
-                ActivityTab(course: widget.course),
-                FilesTab(course: widget.course),
+                ActivityTab(course: widget.course, scrollController: _activityTabController),
+                FilesTab(course: widget.course, scrollController: _filesTabController),
               ],
             ),
           ),
