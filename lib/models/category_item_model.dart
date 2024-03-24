@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nmims_app/screens/announcements/announcements.dart';
 import 'package:nmims_app/screens/assignments/assignments_screen.dart';
 import 'package:nmims_app/screens/courses/courses_screen.dart';
 import 'package:nmims_app/screens/logout/logout.dart';
@@ -37,7 +38,7 @@ final categories = [
     categoryIcon: Icons.class_,
   ),
   Category(
-    categoryScreen: const TimeTable(),
+    categoryScreen: const AnnouncementsScreen(),
     categoryName: 'Announcements',
     categoryIcon: Icons.notifications,
   ),
