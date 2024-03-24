@@ -12,7 +12,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Profile', style: GoogleFonts.inter())),
+      appBar: AppBar(
+        title: Text(
+          'Profile',
+          style: GoogleFonts.inter(),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(20.0),
@@ -156,12 +161,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Change Password', style: GoogleFonts.inter()),
+                child: Text(
+                  'Change Password',
+                  style: GoogleFonts.inter(color: Colors.red),
+                  selectionColor: Colors.white,
+                ),
               ),
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {},
-                child: Text('Change Email/Phone', style: GoogleFonts.inter()),
+                child: Text(
+                  'Change Email/Phone',
+                  style: GoogleFonts.inter(color: Colors.red),
+                ),
               ),
             ],
           ),
