@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class CourseActivityFiles {
   const CourseActivityFiles({
     required this.courseName,
@@ -6,6 +8,7 @@ class CourseActivityFiles {
     required this.courseActivityTitle,
     required this.dateAdded,
     required this.fileSize,
+    required this.fileUrl,
   });
 
   final String courseName;
@@ -14,6 +17,7 @@ class CourseActivityFiles {
   final String courseActivityTitle;
   final DateTime dateAdded;
   final String fileSize;
+  final String fileUrl;
 }
 
 final files = [
@@ -24,6 +28,7 @@ final files = [
     courseActivityTitle: 'OS',
     dateAdded: DateTime(2023, 1, 1),
     fileSize: '2 MB',
+    fileUrl: 'https://example.com/OSProgram.docx',
   ),
   CourseActivityFiles(
     courseName: 'Operating Systems',
@@ -32,6 +37,7 @@ final files = [
     courseActivityTitle: 'OS2',
     dateAdded: DateTime(2023, 2, 1),
     fileSize: '2 MB',
+    fileUrl: 'https://example.com/OS_Progam_2.docx',
   ),
   CourseActivityFiles(
     courseName: 'Data Structures',
@@ -40,6 +46,7 @@ final files = [
     courseActivityTitle: 'JavaQueue',
     dateAdded: DateTime(2023, 3, 1),
     fileSize: '3 MB',
+    fileUrl: 'https://example.com/JavaQueueProgram.pptx',
   ),
   CourseActivityFiles(
     courseName: 'Computer Networks',
@@ -48,6 +55,7 @@ final files = [
     courseActivityTitle: 'CN',
     dateAdded: DateTime(2023, 4, 1),
     fileSize: '4 MB',
+    fileUrl: 'https://example.com/CNProgram.pdf',
   ),
   CourseActivityFiles(
     courseName: 'Computer Networks',
@@ -56,5 +64,42 @@ final files = [
     courseActivityTitle: 'CN2',
     dateAdded: DateTime(2023, 5, 1),
     fileSize: '4 MB',
+    fileUrl: '../assets/files/OSProgram.pdf',
+  ),
+  CourseActivityFiles(
+    courseName: 'Mathematics',
+    courseId: 'MTH111',
+    courseActivityFileName: 'MathEquations.pdf',
+    courseActivityTitle: 'Math Equations',
+    dateAdded: DateTime(2023, 6, 1),
+    fileSize: '3 MB',
+    fileUrl: 'https://example.com/MathEquations.pdf',
+  ),
+  CourseActivityFiles(
+    courseName: 'Mathematics',
+    courseId: 'MTH111',
+    courseActivityFileName: 'AdvancedAlgebra.pdf',
+    courseActivityTitle: 'Advanced Algebra',
+    dateAdded: DateTime(2023, 7, 1),
+    fileSize: '5 MB',
+    fileUrl: 'https://example.com/AdvancedAlgebra.pdf',
+  ),
+  CourseActivityFiles(
+    courseName: 'Physics',
+    courseId: 'PHY111',
+    courseActivityFileName: 'Mechanics.pdf',
+    courseActivityTitle: 'Mechanics',
+    dateAdded: DateTime(2023, 8, 1),
+    fileSize: '6 MB',
+    fileUrl: 'https://example.com/Mechanics.pdf',
+  ),
+  CourseActivityFiles(
+    courseName: 'Physics',
+    courseId: 'PHY111',
+    courseActivityFileName: 'Electromagnetism.pdf',
+    courseActivityTitle: 'Electromagnetism',
+    dateAdded: DateTime(2023, 9, 1),
+    fileSize: '7 MB',
+    fileUrl: 'https://example.com/Electromagnetism.pdf',
   ),
 ];

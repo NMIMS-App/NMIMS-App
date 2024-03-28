@@ -125,6 +125,11 @@ class _AssignmentDetailsScreenState extends State<AssignmentDetailsScreen> {
     }
   }
 
+  void _submitAssignment() {
+    // Handle submission logic here
+    print('Assignment submitted');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,9 +197,7 @@ class _AssignmentDetailsScreenState extends State<AssignmentDetailsScreen> {
               height: 16,
             ),
             ElevatedButton(
-              onPressed: () {
-                // Handle submission logic here
-              },
+              onPressed: _submitAssignment,
               child: Text(
                 'Submit',
                 style: GoogleFonts.inter(

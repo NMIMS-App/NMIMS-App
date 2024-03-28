@@ -1,111 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nmims_app/models/tabular_attendance_item_model.dart';
+
 class Tabularstudent extends StatefulWidget {
-  const Tabularstudent({super.key});
+  const Tabularstudent({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => Tabularstudentstate();
+  _TabularstudentState createState() => _TabularstudentState();
 }
 
-class Tabularstudentstate extends State<Tabularstudent>{
-
-  var startdate = 'Start Date';
-  var enddate = 'End Date';
-
-
-  bool isvisible=false;
-
-  // var tabular=[['Mobile Application Development ','05/05/2023','11:00 am - 12:00 pm','P'],['Software Engineering','12/05/2023','10:00 am - 11:00 am','A'],['Artificial Intelligence','24/06/2023','09:00 am - 10:00 am','P'],['Deep Learning','30/07/2023','11:00 am - 12:00 pm','P'],['Image and Video Processing','03/08/2023','01:00 pm - 02:00 pm','P'],['Cryptography','12/09/2023','09:00 am - 10:00 am','A']];
-
-
+class _TabularstudentState extends State<Tabularstudent> {
+  DateTime? startDate;
+  DateTime? endDate;
+  bool isvisible = false;
 
   @override
   Widget build(BuildContext context) {
+    final filteredAttendance = t_attendance.where((record) {
+      if (startDate != null && endDate != null) {
+        return record.date
+                .isAfter(startDate!.subtract(const Duration(days: 1))) &&
+            record.date.isBefore(endDate!.add(const Duration(days: 1)));
+      }
+      return true;
+    }).toList();
+
     return Scaffold(
-      appBar: AppBar(title: Text('Tabular Data'),),
+      appBar: AppBar(
+        title: const Text(
+          'Tabular Data',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.red,
+        elevation: 0,
+      ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                margin: EdgeInsets.only(right:10,top: 5,bottom: 5),
-                width:((MediaQuery. of(context). size. width)/2)-20,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _datePickerButton(
+                  context,
+                  isStartDate: true,
+                  label: startDate != null
+                      ? DateFormat('dd/MM/yyyy').format(startDate!)
+                      : 'Start Date',
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text('From: $startdate',style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 16)),
-                    IconButton(onPressed: ()async{
-                      DateTime? datepicked = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2023,5),
-                          lastDate: DateTime(2023,11));
-
-                      if(datepicked!=null){
-                        startdate = "${datepicked.day}/${datepicked.month}/${datepicked.year}";
-                        setState(() {
-                        });
-                      }
-                      if(startdate!='Start Date' && enddate!='End Date'){
-                        isvisible=true;
-                        setState(() {
-
-                        });
-                      }
-                    },
-                      icon: Icon( Icons.calendar_today_outlined,size: 35, color: Colors.white,),)
-                  ],
+                _datePickerButton(
+                  context,
+                  isStartDate: false,
+                  label: endDate != null
+                      ? DateFormat('dd/MM/yyyy').format(endDate!)
+                      : 'End Date',
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left:10,top: 5,bottom: 5),
-                width:((MediaQuery. of(context). size. width)/2)-20,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text('To:  ${enddate}',style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w800),),
-                    IconButton(onPressed: ()async{
-                      DateTime? datepicked2 = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(2023,5),
-                          lastDate: DateTime(2023,11));
-
-                      if(datepicked2!=null){
-                        enddate = "${datepicked2.day}/${datepicked2.month}/${datepicked2.year}";
-                        setState(() {
-
-                        });
-                      }
-                      if(startdate!='Start Date' && enddate!='End Date'){
-                        isvisible=true;
-                        setState(() {
-
-                        });
-                      }
-                    },
-                      icon: Icon( Icons.calendar_today_outlined,size:35,color: Colors.white, ),)
-                  ],
-                ),
-              )
-            ],
+              ],
+            ),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -300,45 +252,47 @@ class Tabularstudentstate extends State<Tabularstudent>{
                         return Divider(thickness: 1);
                       },
                     ),
-                  ),
-                ),
-              )
+                    isThreeLine: true,
+                  );
+                },
+                separatorBuilder: (context, index) => const Divider(),
+              ),
+            ),
           ),
-
         ],
       ),
-
     );
   }
 
+  Widget _datePickerButton(BuildContext context,
+      {required bool isStartDate, required String label}) {
+    return OutlinedButton(
+      onPressed: () => _pickDate(context, isStartDate: isStartDate),
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(color: Colors.red),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+      child: Text(label, style: const TextStyle(color: Colors.red)),
+    );
+  }
+
+  Future<void> _pickDate(BuildContext context,
+      {required bool isStartDate}) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (pickedDate != null) {
+      setState(() {
+        if (isStartDate) {
+          startDate = pickedDate;
+        } else {
+          endDate = pickedDate;
+        }
+        isvisible = startDate != null && endDate != null;
+      });
+    }
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

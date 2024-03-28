@@ -90,5 +90,4 @@ final ica = [
       icaStatus: "PASS",
       icaVisibility: true
   ),
-
 ];

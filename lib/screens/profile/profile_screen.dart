@@ -38,31 +38,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Map<String, dynamic>?>(
-      future: fetchStudentData(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            appBar: AppBar(),
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Error: ${snapshot.error}'),
-            ),
-          );
-        } else if (snapshot.hasData) {
-          Map<String, dynamic>? studentData = snapshot.data;
-          if (studentData != null) {
-            String? studentName = studentData['studentName'];
-            String? studentSemester = studentData['studentSemester'];
-            String? studentCourse = studentData['studentCourse'];
-            String? studentID = studentData['studentID'];
-            String? phoneNumber = studentData['phoneNumber'];
-            String? email = studentData['email'];
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Profile',
+          style: GoogleFonts.inter(),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Center(
+                child: CircleAvatar(
+                  radius: 50,
+                  backgroundImage:
+                      NetworkImage('https://via.placeholder.com/150'),
+                ),
+              ),
+              const SizedBox(height: 20),
 
             return Scaffold(
               appBar: AppBar(title: Text('Profile', style: GoogleFonts.inter())),
@@ -223,13 +219,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
-            );
-          }
-        }
-        return Scaffold(
-          appBar: AppBar(),
-          body: const Center(
-            child: Text('No data available.'),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Change Password',
+                  style: GoogleFonts.inter(color: Colors.red),
+                  selectionColor: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Change Email/Phone',
+                  style: GoogleFonts.inter(color: Colors.red),
+                ),
+              ),
+            ],
           ),
         );
       },

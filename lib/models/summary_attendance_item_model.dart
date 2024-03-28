@@ -12,7 +12,7 @@ class Attendance {
 
 final attendance = [
   Attendance(
-    subject: 'supervisory control and data acquisition',
+    subject: 'Supervisory Control and Data Acquisition',
     totallecs: 3,
     presentlecs: 2,
   ),

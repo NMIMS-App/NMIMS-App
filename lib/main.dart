@@ -41,9 +41,10 @@ Future<Widget> determineInitialScreen() async {
 
   await Future.delayed(const Duration(seconds: 2));
 
-  if (FirebaseAuth.instance.currentUser != null && rememberMe) {
-    return const HomeScreen();
-  } else {
-    return const LoginScreen();
-  }
+  // if (FirebaseAuth.instance.currentUser != null && rememberMe) {
+  //   return const HomeScreen();
+  // } else {
+  //   return const LoginScreen();
+  // }
+  return HomeScreen();
 }

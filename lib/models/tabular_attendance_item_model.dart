@@ -14,8 +14,8 @@ class TabularAttendance {
 
 final t_attendance = [
   TabularAttendance(
-    subject: 'supervisory control and data acquisition',
-    date: DateTime(2023, 12, 1),
+    subject: 'Supervisory Control and Data Acquisition',
+    date: DateTime(2023, 1,12),
     time: "3:00pm - 4:00pm",
     pa: 'P',
   ),
