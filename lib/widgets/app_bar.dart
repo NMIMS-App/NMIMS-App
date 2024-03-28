@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:intl/intl.dart';
 import 'package:nmims_app/models/announcements_model.dart';
 import 'package:nmims_app/screens/profile/profile_screen.dart';
@@ -50,11 +53,80 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.black,
                   ),
                   children: [
-                    TextSpan(
-                      text: 'SEM V',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                    IconButton(
+                      icon: const Icon(
+                        Icons.person,
+                        color: Colors.black,
+                        size: 30,
                       ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                        );
+                      },
+                    ),
+                    const SizedBox(width: 4),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "$studentName",
+                          style: GoogleFonts.inter(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text.rich(
+                          TextSpan(
+                            text: "$studentCourse",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "$studentSemester",
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.assignment,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        // Add your attendance icon tap logic here
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.touch_app,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        // Add your attendance icon tap logic here
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.notifications,
+                        color: Colors.black,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        // Add your announcements icon tap logic here
+                      },
                     ),
                   ],
                 ),

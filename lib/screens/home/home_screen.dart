@@ -15,7 +15,7 @@ class _HomePageState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       body: ListView(
         children: [
           const SizedBox(height: 20),

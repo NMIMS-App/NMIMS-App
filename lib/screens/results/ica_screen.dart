@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:nmims_app/models/ica_item_model.dart'; // Import your model here
 
 class ICAScreen extends StatefulWidget {
+  const ICAScreen({super.key});
+
   @override
   State<StatefulWidget> createState() => _ICAScreenState();
 }
@@ -153,5 +155,6 @@ class _ICAScreenState extends State<ICAScreen> {
         ),
       ),
     );
+
   }
 }

@@ -20,7 +20,6 @@ class SummaryAttendanceScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = attendance[index];
           final attendancePercent = item.presentlecs / item.totallecs * 100;
-
           return Card(
             elevation: 4,
             margin: const EdgeInsets.all(8),

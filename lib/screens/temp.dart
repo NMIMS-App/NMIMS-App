@@ -1,60 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Flutter code sample for [TabBar].
+class CustomAppBar2 extends StatelessWidget implements PreferredSizeWidget {
+  final String? studentFullName;
+  final String? studentSemester;
+  final String? studentCourse;
 
-void main() => runApp(const TabBarApp());
+  CustomAppBar2({
+    Key? key,
+    this.studentFullName,
+    this.studentSemester,
+    this.studentCourse,
+  }) : super(key: key);
 
-class TabBarApp extends StatelessWidget {
-  const TabBarApp({super.key});
+  Future<Map<String, dynamic>?> fetchStudentData(String documentID) async {
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('students')
+          .doc(documentID)
+          .get();
+
+      if (snapshot.exists) {
+        // Check if the document exists
+        Map<String, dynamic> studentData = snapshot.data() as Map<String, dynamic>;
+        return studentData;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching document: $e');
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(useMaterial3: true),
-      home: const TabBarExample(),
+    return FutureBuilder<Map<String, dynamic>?>(
+      future: fetchStudentData('test2'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return AppBar(
+            title: CircularProgressIndicator(),
+            // Other AppBar properties here
+          );
+        } else if (snapshot.hasError) {
+          return AppBar(
+            title: Text('Error: ${snapshot.error}'),
+            // Other AppBar properties here
+          );
+        } else if (snapshot.hasData) {
+          Map<String, dynamic>? studentData = snapshot.data;
+          if (studentData != null) {
+            String? studentName = studentData['studentName'];
+            String? studentSemester = studentData['studentSemester'];
+            String? studentCourse = studentData['studentCourse'];
+
+            return AppBar(
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Name: $studentName'),
+                  Text('Semester: $studentSemester'),
+                  Text('Course: $studentCourse'),
+                ],
+              ),
+              // Other AppBar properties here
+            );
+          } else {
+            return AppBar(
+              title: Text('Student document not found or an error occurred.'),
+              // Other AppBar properties here
+            );
+          }
+        } else {
+          return AppBar(
+            title: Text('No data available.'),
+            // Other AppBar properties here
+          );
+        }
+      },
     );
   }
-}
-
-class TabBarExample extends StatelessWidget {
-  const TabBarExample({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 1,
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('TabBar Sample'),
-          bottom: const TabBar(
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.cloud_outlined),
-              ),
-              Tab(
-                icon: Icon(Icons.beach_access_sharp),
-              ),
-              Tab(
-                icon: Icon(Icons.brightness_5_sharp),
-              ),
-            ],
-          ),
-        ),
-        body: const TabBarView(
-          children: <Widget>[
-            Center(
-              child: Text("It's cloudy here"),
-            ),
-            Center(
-              child: Text("It's rainy here"),
-            ),
-            Center(
-              child: Text("It's sunny here"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
