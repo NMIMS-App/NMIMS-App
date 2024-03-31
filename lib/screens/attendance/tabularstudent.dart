@@ -58,199 +58,29 @@ class _TabularstudentState extends State<Tabularstudent> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              // Container(
-              //     margin: EdgeInsets.only(top: 20,bottom: 20),
-              //     decoration: BoxDecoration(
-              //          color:Color.fromRGBO(113,113,112,1),
-              //         borderRadius: BorderRadius.all(Radius.circular(8))
-              //     ),
-              //     width:((MediaQuery. of(context). size. width)/4.31),
-              //     height:80,
-              //     child:Center(
-              //         child:Text('Subject', textAlign: TextAlign.center,style: TextStyle(
-              //           fontSize: 18,
-              //           color: Colors.white,
-              //           fontWeight: FontWeight.w600,
-              //         ),))
-              // ),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(top: 20,bottom: 20),
-                  decoration: BoxDecoration(
-                      color:Color.fromRGBO(113,113,112,1),
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
-                  width:((MediaQuery. of(context). size. width)/4.5),
-                  height:80,
-                  child:Align(
-                      alignment: Alignment.center,
-                      child:Text('Date', textAlign: TextAlign.center,style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),))
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 20,bottom: 20),
-                  // decoration: BoxDecoration(
-                  //   // color:Color.fromRGBO(113,113,112,1),
-                  //     color: Color.fromRGBO(211,211,211,1),
-                  //     boxShadow: [
-                  //       BoxShadow(
-                  //         color: Colors.black45,
-                  //         blurRadius: 8.0, // soften the shadow
-                  //         spreadRadius: 0.1, //extend the shadow
-                  //
-                  //       )
-                  //     ],
-                  //     borderRadius: BorderRadius.all(Radius.circular(8))
-                  // ),
-                  decoration: BoxDecoration(
-                      color:Color.fromRGBO(113,113,112,1),
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
-                  width:((MediaQuery. of(context). size. width)/4.5),
-                  height:80,
-                  child:Center(
-                      child:Text('Time', textAlign: TextAlign.center,style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),))
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 20,bottom: 20),
-                  // decoration: BoxDecoration(
-                  //   color: Color.fromRGBO(211,211,211,1),
-                  //   borderRadius: BorderRadius.all(Radius.circular(8)),
-                  //   boxShadow: [
-                  //     BoxShadow(
-                  //       color: Colors.black45,
-                  //       blurRadius: 8.0, // soften the shadow
-                  //       spreadRadius: 0.1, //extend the shadow
-                  //
-                  //     )
-                  //   ],
-                  // ),
-                  decoration: BoxDecoration(
-                      color:Color.fromRGBO(113,113,112,1),
-                      borderRadius: BorderRadius.all(Radius.circular(8))
-                  ),
-                  width:((MediaQuery. of(context). size. width)/5),
-                  height:80,
-                  child:Center(
-                      child:Text('P / A', textAlign: TextAlign.center,style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                      ),))
-              ),
-            ],
-          ),
-
-          Visibility(
-              visible: isvisible,
-              child:Flexible(
-                child: Center(
-                  child: Container(
-                    height:MediaQuery.of(context).size.height,
-                    child: ListView.separated(itemBuilder: (context,index){
-                      return Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: ((MediaQuery.of(context).size.height)/20)+8+75,
-                        child: Column(
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(top:15),
-                              width: MediaQuery.of(context).size.width,
-                              height: (MediaQuery.of(context).size.height)/20,
-                              child:Text((t_attendance[index].subject), textAlign: TextAlign.center,style: TextStyle(
-                                color:Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                // Container(
-                                // // color:Colors.blue,
-                                // margin: EdgeInsets.only(top: 8),
-                                // width:((MediaQuery. of(context). size. width)/4.31),
-                                // height:90,
-                                // child:Align(
-                                // alignment: Alignment.center,
-                                // child:Text((tabular[index][0]).toString(), textAlign: TextAlign.center,style: TextStyle(
-                                // color:Colors.black,
-                                // fontSize: 16,
-                                // fontWeight: FontWeight.w600,
-                                // ),))
-                                // ),
-
-                                Container(
-                                  width:((MediaQuery. of(context). size. width)/4.5),
-                                  //margin: EdgeInsets.only(top:15),
-                                  height:50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    border: Border.all(color: Colors.black38,width: 1.4),
-                                  ),
-                                  child: Center(
-                                    child:Text("${t_attendance[index].date.day}/${t_attendance[index].date.month}/${t_attendance[index].date.year}",style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),),
-                                  ),
-                                ),
-
-                                Container(
-                                  width:((MediaQuery. of(context). size. width)/4.5),
-                                  height:50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                                    border: Border.all(color: Colors.black38,width: 1.4),
-                                  ),
-                                  child: Center(
-                                    child:Text(t_attendance[index].time.toString(),style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),textAlign: TextAlign.center,),
-                                  ),
-                                ),
-
-                                Container(
-                                  width:((MediaQuery. of(context). size. width)/5),
-                                  height:50,
-                                  child: Center(
-                                      child: Container(
-                                          width: ((MediaQuery. of(context). size. width)/7),
-                                          height:50,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                                            border: Border.all(color: t_attendance[index].pa=='P'?Colors.black:Colors.red ,width: 3.5),
-                                          ),
-                                          child: Center(
-                                            child:Text(t_attendance[index].pa,style: TextStyle(
-                                              color: t_attendance[index].pa=='P'? Colors.black : Colors.red,
-                                              fontSize: 19,
-                                              fontWeight: FontWeight.bold,
-                                            ),),
-                                          )
-                                      )
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                      itemCount: t_attendance.length,
-                      separatorBuilder: (context,index){
-                        return Divider(thickness: 1);
-                      },
+          Expanded(
+            child: AnimatedOpacity(
+              opacity: isvisible ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              child: ListView.separated(
+                padding: const EdgeInsets.all(8),
+                itemCount: filteredAttendance.length,
+                itemBuilder: (context, index) {
+                  final item = filteredAttendance[index];
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor:
+                          item.pa == 'P' ? Colors.green : Colors.red,
+                      child: Text(item.pa,
+                          style: const TextStyle(color: Colors.white)),
+                    ),
+                    title: Text(item.subject),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(DateFormat('dd/MM/yyyy').format(item.date)),
+                        Text(item.time),
+                      ],
                     ),
                     isThreeLine: true,
                   );
