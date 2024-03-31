@@ -14,7 +14,7 @@ class _SyllabusState extends State<Syllabus>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(),
+        appBar: const CustomAppBar(),
         body: SfPdfViewer.network(
             'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf')
     );
