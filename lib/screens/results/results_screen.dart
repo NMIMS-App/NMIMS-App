@@ -11,7 +11,7 @@ class ResultsScreen extends StatelessWidget {
         backgroundColor: Colors.red,
         toolbarHeight: 90,
         title: const Text(
-          "Exams",
+          "Results",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),

@@ -28,7 +28,7 @@ final files = [
     courseActivityTitle: 'OS',
     dateAdded: DateTime(2023, 1, 1),
     fileSize: '2 MB',
-    fileUrl: 'https://example.com/OSProgram.docx',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   ),
   CourseActivityFiles(
     courseName: 'Operating Systems',
@@ -37,7 +37,7 @@ final files = [
     courseActivityTitle: 'OS2',
     dateAdded: DateTime(2023, 2, 1),
     fileSize: '2 MB',
-    fileUrl: 'https://example.com/OS_Progam_2.docx',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   ),
   CourseActivityFiles(
     courseName: 'Data Structures',
@@ -46,7 +46,7 @@ final files = [
     courseActivityTitle: 'JavaQueue',
     dateAdded: DateTime(2023, 3, 1),
     fileSize: '3 MB',
-    fileUrl: 'https://example.com/JavaQueueProgram.pptx',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
   ),
   CourseActivityFiles(
     courseName: 'Computer Networks',

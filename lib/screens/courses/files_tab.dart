@@ -1,13 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:nmims_app/models/course_activity_files_model.dart';
 import 'package:nmims_app/models/courses_model.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:http/http.dart' as http;
+
 
 class FilesTab extends StatefulWidget {
   const FilesTab({Key? key, required this.course, required ScrollController scrollController}) : super(key: key);
   final Course course;
+
   @override
   _FilesTabState createState() => _FilesTabState();
 }
@@ -175,7 +181,7 @@ class _FilesTabState extends State<FilesTab> {
                           ],
                         ),
                         onTap: () {
-                          launchFile(file.courseActivityFileName, file.fileUrl);
+                          launchFile(context, file.courseActivityFileName, file.fileUrl);
                         },
                       ),
                     );
@@ -189,24 +195,35 @@ class _FilesTabState extends State<FilesTab> {
     );
   }
 
-  Future<void> launchFile(String fileName, String fileUrl) async {
+  Future<void> launchFile(BuildContext context, String fileName, String fileUrl) async {
+    final filePath = await downloadAndSavePDF(fileUrl, fileName);
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => PDFViewerScreen(
           fileName: fileName,
-          fileUrl: fileUrl,
+          filePath: filePath,
         ),
       ),
     );
   }
+
+  Future<String> downloadAndSavePDF(String url, String fileName) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final file = File('${directory.path}/$fileName');
+    if (!await file.exists()) {
+      final response = await http.get(Uri.parse(url));
+      await file.writeAsBytes(response.bodyBytes);
+    }
+    return file.path;
+  }
 }
 
 class PDFViewerScreen extends StatelessWidget {
-  const PDFViewerScreen({Key? key, required this.fileName, required this.fileUrl}) : super(key: key);
+  const PDFViewerScreen({Key? key, required this.fileName, required this.filePath}) : super(key: key);
 
   final String fileName;
-  final String fileUrl;
+  final String filePath;
 
   @override
   Widget build(BuildContext context) {
@@ -215,9 +232,29 @@ class PDFViewerScreen extends StatelessWidget {
         title: Text(fileName),
       ),
       body: PDFView(
-        filePath: fileUrl,
+        filePath: filePath,
+        autoSpacing: false,
         onError: (error) {
           print(error);
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text('Error'),
+              content: Text('Failed to open PDF: $error'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text('OK'),
+                ),
+              ],
+            ),
+          );
+        },
+        onRender: (_pages) {
+          print("PDF rendered: $_pages");
+        },
+        onViewCreated: (PDFViewController vc) {
+          print("PDFViewController created");
         },
       ),
     );

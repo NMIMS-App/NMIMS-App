@@ -23,7 +23,7 @@ class _HomePageState extends State<HomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
             child: Column(
               children: [
-                QuickInfoCards(text: 'Attendance', number: 80),
+                QuickInfoCards(text: 'New \nAnnouncements', number: 2),
                 SizedBox(height: 20),
                 QuickInfoCards(text: 'Pending \nAssignments', number: 3),
                 SizedBox(height: 30),
